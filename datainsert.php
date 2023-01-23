@@ -5,17 +5,17 @@ require_once 'config.php';
 //We check if it is defined with isset. Then we write the name of the add button from the post.
 if (isset($_POST['datainsert'])) {
     //We pass the names of the data from the input to the variable.
-    $username = $_POST['username'];
-    $usermail = $_POST['usermail'];
+    $username = $_POST['user_name'];
+    $usermail = $_POST['user_mail'];
 
     //The variable of the PDO connection in the config file is written. 
     //Prepare: An SQL statement template is created and sent to the database. Certain values are left unspecified, called parameters (labeled "?").
     //Then we pass it to a variable.
-    $add = $db->prepare("INSERT INTO datainsert SET username=?, usermail=?");
+    $add = $db->prepare("INSERT INTO datainsert SET user_name=?, user_mail=?");
     //We execute the variable we created and write the set words written in the Insert section as an array as a post.
     $run = $add->execute([
-        $_POST['username'],
-        $_POST['usermail'],
+        $_POST['user_name'],
+        $_POST['user_mail'],
     ]);
     echo "The data was added with success.";
 }
@@ -46,13 +46,13 @@ if (isset($_POST['datainsert'])) {
                     <label for="exampleInputText1">User Name</label>
 
                     <!-- We add the name of the input. -->
-                    <input type="text" name="username" class="form-control" placeholder="Enter user name">
+                    <input type="text" name="user_name" class="form-control" placeholder="Enter user name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">User Mail</label>
 
                     <!-- We add the name of the input. -->
-                    <input type="email" name="usermail" class="form-control" placeholder="Enter user mail">
+                    <input type="email" name="user_mail" class="form-control" placeholder="Enter user mail">
                 </div>
 
                 <!-- We add the name of the button. -->
